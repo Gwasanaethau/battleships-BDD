@@ -5,6 +5,7 @@ feature 'players can set up the game' do
   let(:board) { Board.new }
 
   scenario 'a player needs a board' do
+    player.load_board(board)
     expect(player.board).to be_a Board
   end
 
@@ -16,7 +17,12 @@ feature 'players can set up the game' do
     end
   end
 
-  xscenario 'board is bigger than all the ships'
+  scenario 'board is bigger than all the ships' do
+    ships = [ Ship.battleship, Ship.carrier, Ship.patrol_boat, Ship.submarine, Ship.destroyer ]
+    ships.each { |ship| player.load_ship(ship) }
+    expect { player.load_board(Board.new(3)) }.to raise_error 'Board too Small'
+  end
+
   xscenario 'players can place ships on the board in a certain direction'
   xscenario 'the ships must not overlap'
 end
