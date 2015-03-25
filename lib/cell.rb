@@ -1,9 +1,16 @@
+# Shhhhhhhhh
 class Cell
-  attr_reader :ship
+  attr_accessor :ship
+
   def initialize
-    @ship = false
+    @ship = nil
   end
+
   def add(ship)
-    @ship = true
+    @ship = ship
+  end
+
+  def take_hit
+    @ship.sink
   end
 end
