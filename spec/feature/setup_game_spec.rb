@@ -18,8 +18,11 @@ feature 'players can set up the game' do
 
   xscenario 'board is bigger than all the ships'
 
-  xscenario 'players can place ships on the board in a certain direction' do
-    expect
+  xscenario 'players can place a ships on the board in a certain direction' do
+    ship = Ship.battleship
+    battleship = ship.place(start_coord, end_coord)
+    player.load_ship(battleship)
+    expect(player)
   end
 
   xscenario 'the ships must not overlap'
