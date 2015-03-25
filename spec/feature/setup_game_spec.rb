@@ -9,10 +9,11 @@ feature 'players can set up the game' do
   end
 
   scenario 'a player has a range of ship sizes' do
-    ship = Ship.battleship
-    expect(ship.size).to eq 4
-    player.load_ship(ship)
-    expect(player.fleet).to equal [ship]
+    ships = [ Ship.battleship, Ship.carrier, Ship.patrol_boat, Ship.submarine, Ship.destroyer ]
+    ships.each { |ship| player.load_ship(ship) }
+    player.fleet.each_with_index do |ship, index|
+      expect(ship).to equal ships[index]
+    end
   end
 
   xscenario 'board is bigger than all the ships'
