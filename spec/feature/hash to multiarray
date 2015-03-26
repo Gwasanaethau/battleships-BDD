@@ -1,0 +1,17 @@
+
+hash.sort
+
+hash.each_value{|value| }
+
+hash.flatten
+
+board_side
+
+
+array = board.cells.values
+
+multiarray = []
+
+board_size.times { multiarray << array.shift(board_size) }
+
+

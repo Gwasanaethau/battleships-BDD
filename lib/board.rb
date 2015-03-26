@@ -21,6 +21,10 @@ class Board
     end
   end
 
+  def won?
+    all_ships.empty?
+  end
+
   private
 
   def create_cells_hash(side_length)
@@ -30,4 +34,11 @@ class Board
       end
     end
   end
+
+  def all_ships
+    cell_values = @cells.values
+    cell_values.keep_if { |value| value.is_a? Ship }
+    cell_values.keep_if { |ship| !ship.sunk? }
+  end
+
 end
