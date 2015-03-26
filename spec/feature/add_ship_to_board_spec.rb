@@ -28,4 +28,11 @@ feature 'board can be hit at a location and sink a ship or miss' do
     board.take_hit(coord)
     expect(ship).to be_sunk
   end
+
+  scenario 'there can be a winning board' do
+    coord = "A1"
+    board.add(coord, ship)
+    board.take_hit(coord)
+    expect(board).to be_won
+  end
 end
